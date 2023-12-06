@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import CustomInput from "./CustomInput";
+import ActivityComponents from "./ActivityComponents";
 
 const genders = [
   { name: "Male", id: "male" },
@@ -12,6 +13,9 @@ const CalculatorApp = () => {
   const [age, setAge] = React.useState<number>(0);
   const [height, setHeight] = React.useState<number>(0);
   const [weight, setWeight] = React.useState<number>(0);
+  const [currentActivity, setActivity] = React.useState<number>(1.2);
+
+  console.log(currentActivity);
 
   const handleGender = (gender: string) => {
     setGender(gender);
@@ -51,7 +55,7 @@ const CalculatorApp = () => {
             ))}
           </div>
         </div>
-        <div className="inputs flex gap-20 mt-4">
+        <div className="inputs flex gap-20 mt-4 mb-6">
           <div className="input-content">
             <p className="input-content__title">Age</p>
             <CustomInput
@@ -92,6 +96,7 @@ const CalculatorApp = () => {
             />
           </div>
         </div>
+        <ActivityComponents setActivity={setActivity} />
       </div>
     </StyledCalculator>
   );

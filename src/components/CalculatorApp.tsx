@@ -56,6 +56,7 @@ const CalculatorApp = () => {
       setCaloriesNorm(Math.round(norm * currentActivity));
       setCaloriesMinimal(Math.round(norm * currentActivity * 0.85));
       setCaloriesMaximal(Math.round(norm * currentActivity * 1.15));
+      scrollToBottom();
     }
   };
 
@@ -66,6 +67,12 @@ const CalculatorApp = () => {
       setIsAllowed(false);
     }
   };
+
+  function scrollToBottom() {
+    setTimeout(() => {
+      window.scrollTo(0, document.body.scrollHeight);
+    }, 100);
+  }
 
   React.useEffect(() => {
     isReadyToCount();

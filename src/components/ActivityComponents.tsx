@@ -36,6 +36,7 @@ const activityTypes = [
 
 interface ActivityComponentsProps {
   setActivity: (value: number) => void;
+  currentActivity: number;
 }
 
 const ActivityComponents = (props: ActivityComponentsProps) => {
@@ -57,6 +58,7 @@ const ActivityComponents = (props: ActivityComponentsProps) => {
         {activityTypes.map((item, index) => (
           <div className="mb-2" key={index}>
             <input
+              className="activity__input"
               onChange={handleInputChange}
               type="radio"
               id={item.id}
@@ -66,12 +68,16 @@ const ActivityComponents = (props: ActivityComponentsProps) => {
             />
             <div>
               <label
-                className="text-[19px] cursor-pointer hover:text-[#fd7d36] transition-all"
+                className={`text-[19px] cursor-pointer hover:text-[#fd7d36] transition-all ${
+                  props.currentActivity === item.number ? "text-[#fd7d36]" : ""
+                }`}
                 htmlFor={item.id}
               >
                 {item.type}
               </label>
-              <p className="text-[#bdbdbd] text-[18px]">{item.description}</p>
+              <p className="text-[#bdbdbd] text-[18px] mt-1">
+                {item.description}
+              </p>
             </div>
           </div>
         ))}
@@ -100,6 +106,8 @@ const StyledActivity = styled.div`
 
       width: 16px;
       height: 16px;
+      min-width: 16px;
+      min-height: 16px;
       border: 0.15em solid #c8c8c8;
       border-radius: 50%;
       transform: translateY(-0.075em);

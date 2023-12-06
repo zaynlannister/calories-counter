@@ -2,6 +2,7 @@ import React, { ChangeEvent } from "react";
 import styled from "styled-components";
 import CustomInput from "./CustomInput";
 import ActivityComponents from "./ActivityComponents";
+import { formatNumber } from "../utils/formatNumber";
 
 const genders = [
   { name: "Male", id: "male", number: 5 },
@@ -72,7 +73,9 @@ const CalculatorApp = () => {
   return (
     <StyledCalculator>
       <div className="bg-white py-[20px] px-[30px] rounded-[10px]">
-        <p className="font-bold text-[35px] border-b mb-4">Calories Counter</p>
+        <p className="header-title font-bold text-[35px] border-b mb-4">
+          Calories Counter
+        </p>
         <div>
           <div className="gender">
             <p className="gender-title text-[20px] font-bold mb-2">Gender</p>
@@ -90,7 +93,7 @@ const CalculatorApp = () => {
               ))}
             </div>
           </div>
-          <div className="inputs flex gap-20 mt-4 mb-6">
+          <div className="inputs flex gap-4 mt-4 mb-6">
             <div className="input-content">
               <p className="input-content__title">Age</p>
               <CustomInput
@@ -131,7 +134,12 @@ const CalculatorApp = () => {
               />
             </div>
           </div>
-          <ActivityComponents setActivity={setActivity} />
+
+          <ActivityComponents
+            currentActivity={currentActivity}
+            setActivity={setActivity}
+          />
+
           <div className="mt-6">
             <button
               onClick={submitCount}
@@ -139,27 +147,27 @@ const CalculatorApp = () => {
                 !isAllowed ? "disabled" : ""
               }`}
             >
-              Рассчитать
+              Count
             </button>
           </div>
         </div>
       </div>
       {caloriesNorm && caloriesMinimal && caloriesMaximal ? (
-        <div className="bg-white py-[20px] px-[30px] rounded-[10px] mt-4">
+        <div className="bg-white py-[20px] px-[30px] rounded-[10px] mt-4 mb-10">
           <p className="text-[#fd7d36] font-bold text-[24px]">
             Your calories norm
           </p>
           <div className="flex flex-col gap-2 mt-4">
             <div>
               <p className="text-[18px] font-[600]">
-                Weight maintenance: {caloriesNorm} kcal
+                Weight maintenance: {formatNumber(caloriesNorm)} kcal
               </p>
             </div>
             <div className="text-[18px] font-[600]">
-              <p>Weight loss: {caloriesMinimal} kcal</p>
+              <p>Weight loss: {formatNumber(caloriesMinimal)} kcal</p>
             </div>
             <div className="text-[18px] font-[600]">
-              <p>Weight gain: {caloriesMaximal} kcal</p>
+              <p>Weight gain: {formatNumber(caloriesMaximal)} kcal</p>
             </div>
           </div>
         </div>
@@ -183,6 +191,16 @@ const StyledCalculator = styled.div`
   .count-btn.disabled {
     background-color: #d1d1d1;
     cursor: not-allowed;
+  }
+
+  @media (max-width: 540px) {
+    width: 100%;
+  }
+
+  @media (max-width: 430px) {
+    .header-title {
+      font-size: 25px;
+    }
   }
 `;
 

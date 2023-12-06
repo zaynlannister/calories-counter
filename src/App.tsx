@@ -1,7 +1,9 @@
+import CalculatorApp from "./components/CalculatorApp";
+
 const App = () => {
   return (
-    <div>
-      <p>Счетчик калорий</p>
+    <div className="flex justify-center mt-12">
+      <CalculatorApp />
     </div>
   );
 };

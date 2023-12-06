@@ -153,7 +153,7 @@ const CalculatorApp = () => {
         </div>
       </div>
       {caloriesNorm && caloriesMinimal && caloriesMaximal ? (
-        <div className="bg-white py-[20px] px-[30px] rounded-[10px] mt-4 mb-10">
+        <div className="bg-white py-[20px] px-[30px] rounded-[10px] mt-4">
           <p className="text-[#fd7d36] font-bold text-[24px]">
             Your calories norm
           </p>

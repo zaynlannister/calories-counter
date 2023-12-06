@@ -7,9 +7,21 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: 200ms all;
 }
 
 body {
   font-family: "Josefin Sans", sans-serif;
   background-color: antiquewhite;
+  color: #4b4b4b;
+}
+
+.primary-button {
+  border: none;
+  outline: none;
+  background-color: #fd7d36;
+  padding: 10px 30px;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 4px;
 }
